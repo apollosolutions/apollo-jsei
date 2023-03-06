@@ -6,6 +6,8 @@
 
 Apollo JSEI creates Kotlin [external interfaces](https://kotlinlang.org/docs/js-interop.html#external-interfaces) for your javascript objects that match the shape of your GraphQL queries.
 
+It reuses some internal parts of [Apollo Kotlin](https://github.com/apollographql/apollo-kotlin) but provides a much more lightweight (and much less type safe) way to model your GraphQL data in Kotlin.
+
 ## Installation
 
 This project is not published. You can either build locally (`./gradlew publishToMavenLocal` or use as an included build) or use the SNAPSHOTS:

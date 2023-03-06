@@ -1,0 +1,52 @@
+type Query {
+    animal: Animal
+    node: Node
+    direction: Direction
+    date: Date!
+}
+
+scalar Date
+enum Direction {
+    SOUTH
+    NORTH
+}
+type Node {
+    id: ID!
+}
+interface Animal {
+    species: String
+}
+
+type Cat implements Animal {
+    species: String!
+    mustaches: Int
+}
+
+type Lion implements Animal {
+    species: String
+    roar: String!
+}
+
+query GetAnimal {
+    animal {
+        __typename
+        species
+        ... on Cat {
+            mustaches
+        }
+        ...lionFragment
+    }
+}
+
+fragment lionFragment on Lion {
+    roar
+}
+
+query GetStuff {
+    node {
+        __typename
+        id
+    }
+    direction
+    date
+}

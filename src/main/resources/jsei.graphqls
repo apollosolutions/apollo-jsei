@@ -1,0 +1,1 @@
+directive @mapsTo(fcdn: String!) on SCALAR

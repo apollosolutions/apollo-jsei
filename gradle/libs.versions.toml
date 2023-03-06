@@ -1,0 +1,16 @@
+[versions]
+kotlin = "1.8.10"
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+gr8 = { id = "com.gradleup.gr8", version = "0.7" }
+
+[libraries]
+gradle-api = { group = "dev.gradleplugins", name = "gradle-api", version = "5.6" }
+kotlinpoet = { group = "com.squareup", name = "kotlinpoet", version = "1.12.0" }
+apollo-ast = { group = "com.apollographql.apollo3", name = "apollo-ast", version = "4.0.0-SNAPSHOT" }
+kgp-min = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version = "1.8.10" }
+kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test" }
+vespene = { group = "net.mbonnin.vespene", name = "vespene-lib", version = "0.5" }
+

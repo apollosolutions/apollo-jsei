@@ -1,27 +1,44 @@
-# editor
-.vscode
+.fleet
+.gradle
 
-# dependencies
-node_modules
+# Idea
+**/.idea/*
+!**/.idea/codeStyles
+!**/.idea/icon.png
+!**/.idea/runConfigurations
+!**/.idea/scopes
+*.iml
 
-# logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# Generated files
+build
+/reports
 
-# environment
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+# Place where the Android SDK path is set
+local.properties
 
-# misc
+# Secret used by sample apps
+github_token
+
+# XCode 
+xcuserdata
+project.xcworkspace
+
+# Mac OS Finder 
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-*[Tt]humbs.db
-*.Trashes
+Thumbs.db
+db.json
+*.log
+
+# Docs
+node_modules/
+/docs/public
+/docs/.cache
+!docs/public/_redirects
+.deploy*/
+docs.json
+package-lock.json
+**/.project
+.vscode/**
+**/bin
+.sqldelight
+

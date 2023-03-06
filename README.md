@@ -47,7 +47,7 @@ apolloJsei {
 }
 ```
 
-Write a query:
+Download your schema to `src/jsMain/graphql/schema.graphqls` and write a query in `src/jsMain/graphql/query.grapqhl`:
 
 ```graphql
 query MyQuery {

@@ -22,7 +22,9 @@ repositories {
 }
 
 ```
-Outline the steps required to install project dependencies
+## Sample project
+
+Open the `sample` directory to see and example of the plugin in action with unit tests in `jsTest`
 
 ## Usage
 

@@ -23,7 +23,7 @@ object ApolloJseiCompiler {
         files.map { file ->
             file.source().buffer().use { it.parseAsGQLDocument(file.absolutePath) }
         }.flatMap {
-            it.getOrThrow().definitions
+            it.valueAssertNoErrors().definitions
         }.forEach {
             when (it) {
                 is GQLOperationDefinition -> operations.add(it)
@@ -36,7 +36,7 @@ object ApolloJseiCompiler {
             "ApolloJsei: no type definitions found: did you add a schema?"
         }
 
-        val schema = GQLDocument(schemaDefinitions, null).validateAsSchema().getOrThrow()
+        val schema = GQLDocument(schemaDefinitions, null).validateAsSchema().valueAssertNoErrors()
 
         val fragmentsMap = fragments.associateBy { it.name }
         operations.forEach {

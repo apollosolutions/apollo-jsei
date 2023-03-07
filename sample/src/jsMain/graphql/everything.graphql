@@ -3,6 +3,7 @@ type Query {
     node: Node
     direction: Direction
     date: Date!
+    list: [Int!]!
 }
 
 scalar Date
@@ -49,4 +50,8 @@ query GetStuff {
     }
     direction
     date
+}
+
+query GetList {
+    list
 }

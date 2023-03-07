@@ -178,7 +178,7 @@ internal class TypeSpecsBuilder(
     private fun IrType.toTypename(): TypeName {
         return when (this) {
             is IrNullableType -> ofType.toTypename().copy(nullable = true)
-            is IrListType -> ClassName("kotlin.collections", "List").parameterizedBy(ofType.toTypename())
+            is IrListType -> ClassName("kotlin", "Array").parameterizedBy(ofType.toTypename())
             is IrModelType -> ClassName(packageName, nameMap[path]!!)
             is IrNamedType -> {
                 when (name) {

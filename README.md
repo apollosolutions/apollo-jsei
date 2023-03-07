@@ -32,7 +32,7 @@ Add the Gradle plugins to your `build.gradle[.kts]` script:
 
 ```kotlin
 plugins {
-    id("com.apollographql.apollo.jsei").version(latestVersion)
+    id("com.apollographql.jsei").version(latestVersion)
 }
 ```
 

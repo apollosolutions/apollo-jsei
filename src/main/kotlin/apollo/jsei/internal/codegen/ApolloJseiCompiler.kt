@@ -114,6 +114,7 @@ private fun GQLOperationDefinition.toFileSpec(
         .let {
             FileSpec.builder(packageName, filename)
                 .apply {
+                    addType(responseTypeSpec(packageName, filename))
                     it.forEach {
                         addType(it)
                     }
@@ -122,6 +123,18 @@ private fun GQLOperationDefinition.toFileSpec(
         }
 }
 
+private fun responseTypeSpec(packageName: String, name: String): TypeSpec {
+    return TypeSpec.interfaceBuilder("${name}Response")
+        .addModifiers(KModifier.EXTERNAL)
+        .addProperty(PropertySpec.builder("data", ClassName(packageName, "${name}Data").copy(nullable = true)).build())
+        .addProperty(PropertySpec.builder(
+            "errors",
+            ClassName("kotlin", "Array")
+                .parameterizedBy(ClassName("kotlin", "Any"))
+                .copy(nullable = true)
+        ).build())
+        .build()
+}
 internal class TypeSpecsBuilder(
     val prefix: String,
     val dataField: GQLField,

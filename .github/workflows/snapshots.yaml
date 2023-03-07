@@ -13,7 +13,7 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: 19
-      - run: ./gradlew -p sample build && ./gradlew build
+      - run: ./gradlew -p sample build && ./gradlew build publishAllPublicationsToOssSnapshots
         env:
           SONATYPE_NEXUS_PASSWORD: ${{ secrets.SONATYPE_NEXUS_PASSWORD }}
           SONATYPE_NEXUS_USERNAME: ${{ secrets.SONATYPE_NEXUS_USERNAME }}

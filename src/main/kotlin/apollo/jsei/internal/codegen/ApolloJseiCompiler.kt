@@ -2,6 +2,7 @@ package apollo.jsei.internal.codegen
 
 import com.apollographql.apollo3.annotations.ApolloExperimental
 import com.apollographql.apollo3.ast.*
+import com.apollographql.apollo3.ast.introspection.toSchema
 import com.squareup.kotlinpoet.*
 import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.parameterizedBy
 import okio.buffer
@@ -21,9 +22,9 @@ object ApolloJseiCompiler {
         val schemaDefinitions = mutableListOf<GQLDefinition>()
 
         files.map { file ->
-            file.source().buffer().use { it.parseAsGQLDocument(file.absolutePath) }
+            file.toSchema().toGQLDocument()
         }.flatMap {
-            it.valueAssertNoErrors().definitions
+            it.definitions
         }.forEach {
             when (it) {
                 is GQLOperationDefinition -> operations.add(it)

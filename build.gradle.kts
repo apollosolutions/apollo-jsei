@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 import kotlinx.coroutines.runBlocking
 import net.mbonnin.vespene.lib.NexusStagingClient
 
@@ -5,6 +7,18 @@ buildscript {
     dependencies {
         classpath(libs.vespene)
     }
+}
+
+java {
+    toolchain.languageVersion.set(JavaLanguageVersion.of(19))
+}
+
+tasks.withType<JavaCompile>().configureEach {
+    options.release.set(11)
+
+}
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile::class.java).configureEach {
+    kotlinOptions.jvmTarget = "11"
 }
 
 plugins {

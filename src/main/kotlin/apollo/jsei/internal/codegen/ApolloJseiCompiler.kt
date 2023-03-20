@@ -21,10 +21,16 @@ object ApolloJseiCompiler {
         val fragments = mutableListOf<GQLFragmentDefinition>()
         val schemaDefinitions = mutableListOf<GQLDefinition>()
 
-        files.map { file ->
-            file.toSchema().toGQLDocument()
+        val (jsonFiles, gqlFiles) = files.partition { it.extension == "json" }
+
+        jsonFiles.singleOrNull()?.toSchema()?.typeDefinitions?.values?.forEach {
+            schemaDefinitions.add(it)
+        }
+
+        gqlFiles.map { file ->
+            file.source().buffer().use { it.parseAsGQLDocument(file.absolutePath) }
         }.flatMap {
-            it.definitions
+            it.valueAssertNoErrors().definitions
         }.forEach {
             when (it) {
                 is GQLOperationDefinition -> operations.add(it)
